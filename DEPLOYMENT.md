@@ -4,10 +4,10 @@
 | --- | --- |
 | Server | Profitcast KVM: Hostinger VPS `root@187.127.149.216` (srv1575430, Ubuntu, nginx 1.24) |
 | Review link | <https://tdmpoonamallee-preview.187.127.149.216.nip.io> (live now, HTTPS, kept out of Google with noindex) |
-| Live address | <https://lp.tdmpoonamallee.in> (waiting on one DNS record, see *Going live*) |
+| Live address | <https://lp.tdmpoonamallee.in> (live since 19 September 2026) |
 | Files | `/var/www/lp.tdmpoonamallee.in`, previous release at `.prev` |
 | nginx vhost | `/etc/nginx/sites-available/lp.tdmpoonamallee.in`, source in `deploy/nginx/` |
-| Certificate | certbot lineage `lp.tdmpoonamallee.in`, valid to 18 December 2026, renews automatically |
+| Certificate | certbot lineage `lp.tdmpoonamallee.in`, covers both names, valid to 18 December 2026, renews automatically |
 | Code | <https://github.com/profitcastdev-byte/tdm-poonamallee> |
 
 Set up the same way as the TDM ECR pages (`TDM ECR - Wash - Landing Page`),
@@ -57,53 +57,48 @@ change and push to GitHub, so the repo always matches what is live.
 
 ---
 
-## Going live on lp.tdmpoonamallee.in
+## Live on lp.tdmpoonamallee.in (since 19 September 2026)
 
 The domain's DNS is managed at Hostinger (nameservers `*.dns-parking.com`).
-`tdmpoonamallee.in` itself is a Hostinger parked page; leave the `@` and `www`
-records alone. Only names under `lp` point at the KVM.
+`tdmpoonamallee.in` itself is a Hostinger parked page; its `@` and `www`
+records were left alone. Only `lp` points at the KVM.
 
-1. **Add the DNS record** in hPanel → Domains → tdmpoonamallee.in →
-   DNS / Nameservers → Manage DNS records:
+1. **DNS record**, added in hPanel → Domains → tdmpoonamallee.in →
+   DNS / Nameservers:
 
    | Type | Name | Points to | TTL |
    | --- | --- | --- | --- |
    | `A` | `lp` | `187.127.149.216` | default |
-   | `A` | `*.lp` | `187.127.149.216` | default (optional, see below) |
 
-   `lp` is the one this page needs. The wildcard `*.lp` follows the house
-   scheme (`<page>.lp.<domain>`) so later pages such as `ppf.lp.tdmpoonamallee.in`
-   need no new record, but it does **not** cover `lp.tdmpoonamallee.in` itself,
-   so it cannot replace the first row. Until a page exists for a name under the
-   wildcard, that name lands on another client's site on this shared server
-   (plain HTTP) or shows a certificate warning (HTTPS).
+   Confirmed at both Hostinger nameservers, 8.8.8.8 and 1.1.1.1, with no AAAA
+   record beside it. The domain has no CAA records, so Let's Encrypt can issue.
 
-   On 19 September 2026 neither record existed (`lp.tdmpoonamallee.in` returned
-   NXDOMAIN at `athena.dns-parking.com`). The domain has no CAA records, so
-   Let's Encrypt can issue for it.
-
-2. **Wait until public DNS returns the KVM:**
-
-   ```powershell
-   Resolve-DnsName lp.tdmpoonamallee.in -Server 8.8.8.8
-   ```
-
-3. **Add the live name to the certificate**, on the server:
+2. **Certificate** extended to the live name, listed first so it is the
+   certificate's primary name (what the padlock shows as *Issued to*):
 
    ```bash
-   ssh root@187.127.149.216
-   certbot --nginx --non-interactive --redirect --expand --cert-name lp.tdmpoonamallee.in -d tdmpoonamallee-preview.187.127.149.216.nip.io -d lp.tdmpoonamallee.in
+   certbot --nginx --non-interactive --redirect --force-renewal --cert-name lp.tdmpoonamallee.in -d lp.tdmpoonamallee.in -d tdmpoonamallee-preview.187.127.149.216.nip.io
+   certbot renew --dry-run --no-random-sleep-on-renew --cert-name lp.tdmpoonamallee.in
    ```
 
-   This fails until step 2 passes. Until it runs, `http://lp.tdmpoonamallee.in`
-   answers 404. That is certbot's placeholder, not a fault.
+3. **Verified:** trusted certificate for both names, valid to 18 December 2026,
+   renewal dry run passes; `http://` redirects to `https://`; the live name
+   sends no `X-Robots-Tag` (Google may index it) while the review link keeps
+   noindex; `.\deploy-kvm.cmd --check` shows 200 for both addresses; in Chrome
+   on the live address every file loads, there are no errors, and all 10 call
+   and WhatsApp buttons fire their conversion (tested with Google blocked); the
+   neighbouring sites answered the same before and after.
 
-4. **Check:** `.\deploy-kvm.cmd --check` should show 200 for both addresses.
+4. **Still to do: point the Google Ads final URLs** at
+   `https://lp.tdmpoonamallee.in/`, then make one real Call click and one
+   WhatsApp click from a phone and confirm both land in Google Ads → Goals →
+   Conversions (or watch them fire in Google Tag Assistant).
 
-5. **Point the Google Ads final URLs** at `https://lp.tdmpoonamallee.in/`,
-   then make one real Call click and one WhatsApp click from a phone and
-   confirm both land in Google Ads → Goals → Conversions (or watch them fire in
-   Google Tag Assistant).
+**Another page later** (for example `ppf.lp.tdmpoonamallee.in`): add an `A`
+record for that name, or the wildcard `*.lp` once for all future pages. A
+wildcard never covers `lp` itself, so keep the `lp` record. Give the new page
+its own vhost, docroot and certificate the same way as this one, and leave this
+vhost as it is.
 
 If an office PC shows **ERR_SSL_PROTOCOL_ERROR** right after the switch while a
 phone on mobile data loads the page fine, the office router is serving a cached

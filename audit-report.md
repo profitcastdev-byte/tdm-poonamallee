@@ -4,13 +4,13 @@
 **Page:** `index.html` + `assets/` (static site, no build step)
 **Traffic:** Google Ads, mostly phones
 **Review link:** <https://tdmpoonamallee-preview.187.127.149.216.nip.io>
-**Live address:** <https://lp.tdmpoonamallee.in> (goes live once its DNS record is added)
+**Live address:** <https://lp.tdmpoonamallee.in> (live since 19 September 2026)
 
 ## Verdict: DEPLOY-READY ✅ YES
 
-No blocking issues. Four small fixes were made during this QA. The page is
-already running on the Profitcast KVM at the review link above. Going live on
-`lp.tdmpoonamallee.in` waits only on one DNS record at Hostinger (see *To do*).
+No blocking issues. Four small fixes were made during this QA. The page went
+live on the Profitcast KVM the same day: first on the review link above, then
+on `lp.tdmpoonamallee.in` over HTTPS once the DNS record was added.
 
 ## What was checked
 
@@ -60,11 +60,8 @@ already running on the Profitcast KVM at the review link above. Going live on
 
 These cannot be done from the files.
 
-1. **Add the DNS record at Hostinger** (hPanel → Domains → tdmpoonamallee.in →
-   DNS): `A`, name `lp`, points to `187.127.149.216`. Optionally also `A`,
-   name `*.lp`, same IP, for future `<page>.lp` pages; the wildcard does not
-   cover `lp` itself. Then the certificate is extended to the live name with
-   one command (`DEPLOYMENT.md`, *Going live*, step 3).
+1. **DNS record and HTTPS: done 19 September.** `A lp -> 187.127.149.216` was
+   added at Hostinger and the certificate now covers `lp.tdmpoonamallee.in`.
 2. **Switch the Google Ads final URLs** to `https://lp.tdmpoonamallee.in/`.
 3. **Test the conversions on the live URL.** Open it with Google Tag Assistant,
    tap Call and WhatsApp once each, and confirm both conversions register. In

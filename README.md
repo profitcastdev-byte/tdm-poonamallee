@@ -4,8 +4,8 @@ Static Google Ads landing page for The Detailing Mafia, Poonamallee (Chennai).
 Conversions are Call and WhatsApp only. No build step: open `index.html`, or
 serve the folder with any static host.
 
-- Live address: <https://lp.tdmpoonamallee.in> (on the Profitcast KVM, waiting on
-  one DNS record; `DEPLOYMENT.md`)
+- Live address: <https://lp.tdmpoonamallee.in> (on the Profitcast KVM, live since
+  19 Sep 2026; `DEPLOYMENT.md`)
 - Review link: <https://tdmpoonamallee-preview.187.127.149.216.nip.io>
 - Code: <https://github.com/profitcastdev-byte/tdm-poonamallee>
 
@@ -33,8 +33,8 @@ The page lives on the Profitcast KVM. From the project root in PowerShell:
 .\deploy-kvm.cmd --rollback   # put the previous release back
 ```
 
-`DEPLOYMENT.md` has the server details, the go-live steps (one DNS record, one
-certbot command) and the rules for that shared server.
+`DEPLOYMENT.md` has the server details, how the page went live, and the rules
+for that shared server.
 
 `TDM-Poonamallee-Landing-Page-deploy.zip` holds exactly what the site needs, for
 any other host: `index.html` and `assets/` at the zip's root (22 files, about
@@ -224,7 +224,7 @@ reveal would never fire. The wipe lives on the element's first child for that re
 - [x] Launch QA (`audit-report.md`, 19 Sep): deploy-ready
 - [x] On the Profitcast KVM with HTTPS at the review link (`DEPLOYMENT.md`)
 - [x] Code on GitHub (profitcastdev-byte/tdm-poonamallee)
-- [ ] DNS at Hostinger: `A lp -> 187.127.149.216`, then the certbot `--expand` in `DEPLOYMENT.md`
+- [x] DNS at Hostinger (`A lp -> 187.127.149.216`) and HTTPS on https://lp.tdmpoonamallee.in (19 Sep)
 - [ ] Google Ads final URLs switched to https://lp.tdmpoonamallee.in/
 - [ ] After launch: verify both conversions in Google Tag Assistant
 - [ ] Final FAQ answers 2 to 6 (or confirm the brief-sourced ones)
