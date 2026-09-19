@@ -1,0 +1,11 @@
+# The deploy zip IS tracked on purpose, so the latest ready-to-upload bundle can
+# always be downloaded straight from the repo. Rebuild it whenever index.html or
+# anything in assets/ changes, and commit it alongside those changes.
+
+# Personal Claude Code settings (launch.json alongside it is shared and kept)
+.claude/settings.local.json
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini

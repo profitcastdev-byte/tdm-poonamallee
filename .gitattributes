@@ -1,0 +1,12 @@
+# LF everywhere, whatever OS checks this out, so diffs never show
+# whole-file line-ending churn.
+* text=auto eol=lf
+
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.zip  binary
+
+# ...except batch files, which cmd.exe can misparse with LF endings
+*.cmd text eol=crlf
