@@ -136,10 +136,59 @@ Notes on the current set:
 | Ultra Crystal Gloss | 10 years | 1,20,500 | 1,35,000 | 1,50,500 |
 
 The film names and warranties match the UltrashieldX product table in
-`TDM - Brochure New 2025.pdf` (Ace 5 years, Fusion 7 years). The brochure's own
-per-square-foot rates and its ceramic, glass film and detailing packages are the
-national price list and are deliberately not on the page: only these four
-packages are quoted, and everything else is quoted after the free inspection.
+`TDM - Brochure New 2025.pdf` (Ace 5 years, Fusion 7 years).
+
+### Denting and painting (25 September 2026)
+
+The client's table prices seven items across four car sizes. Bumper, bonnet,
+boot and door all cost the same, so the page shows one row for the four of them,
+and each row carries the range from a small car to a high end luxury car.
+
+| Item | Small car | Sedan | SUV, MUV, luxury | High end luxury |
+|---|---|---|---|---|
+| Bumper / bonnet / boot / door (each) | 7,500 | 8,000 | 9,500 | 12,000 |
+| Fender | 6,000 | 6,500 | 7,000 | 7,500 |
+| Roof | 12,000 | 14,000 | 17,000 | 20,000 |
+| Full car | 1,10,000 | 1,30,000 | 1,40,000 | 1,50,000 |
+
+### Windshield and sunroof film
+
+Both cost exactly the same; only the warranty differs (12 months on the
+windshield, 8 years on the sunroof), so the page shows the warranty per row.
+
+| Car | Small car | Sedan | SUV, MUV, luxury | High end luxury |
+|---|---|---|---|---|
+| Windshield or sunroof film | 12,500 | 14,000 | 17,000 | 22,000 |
+
+### Sunfilm and window film (UltrashieldX)
+
+Every price is the film's rate times the glass area, and the areas are identical
+for all four films. So the page shows one row per coverage, with the range
+running across all four films and all car sizes, rather than 48 separate cells.
+
+| Film | Rate |
+|---|---|
+| Chameleon | 400 / sqft |
+| Premium IR series ceramic | 450 / sqft |
+| Dichroic | 450 / sqft |
+| IR sputter | 550 / sqft |
+
+| Coverage | Hatchback | Sedan | SUV / high end luxury |
+|---|---|---|---|
+| Full car | 40 sqft | 50 sqft | 55 sqft |
+| Both side glasses | 20 sqft | 20 sqft | 25 sqft |
+| Front glass | 15 sqft | 15 sqft | 17 sqft |
+| Front and rear glass | 25 sqft | 25 sqft | 30 sqft |
+
+Rate times area gives every printed price: chameleon full car hatchback is
+400 x 40 = 16,000 and IR sputter full car SUV is 550 x 55 = 30,250, the two ends
+of the "Full car" range on the page.
+
+### What is left off
+
+The brochure's national list prices for ceramic and graphene coating, trim,
+alloy, leather and glass coating, treatments and bike detailing are not on the
+page. Those services are quoted after the free inspection.
 
 To change a price, edit the `<dd>` in that card in `index.html` and bump the
 `?v=` numbers. To add a package, copy one `.price-card` block: the cards share

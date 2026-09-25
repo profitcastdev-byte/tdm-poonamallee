@@ -74,13 +74,19 @@ These cannot be done from the files.
 
 ## Update, 25 September 2026
 
-A **Full Car PPF Packages** section (`#pricing`) was added between Denting &
-Painting and the FAQ, from the client's price table: four films, three car
-sizes, twelve prices. Re-checked after the change: no sideways scroll at 320 to
-1920 px, the price rows line up across all four cards at every width, both new
-buttons ("Book Free Inspection" and "Ask On WhatsApp") fire their conversions,
-and there are no script errors. The page now has 12 tracked call / WhatsApp
-buttons instead of 10.
+A pricing section (`#pricing`) was added between Denting & Painting and the
+FAQ, from the client's price tables: full car PPF (four films), denting and
+painting, sunfilm and window film, and windshield and sunroof film. The tables
+hold 96 prices between them; the page shows 22 rows, because identical rows are
+merged (bumper, bonnet, boot and door cost the same; windshield and sunroof cost
+the same) and the window film table is a rate times an area, so it collapses to
+one row per coverage with a range. The full tables are kept in the README.
+
+Re-checked after the change: no sideways scroll at 320 to 1920 px, the rows line
+up across the cards at every width, headings run h2 to h3 to h4 with no skips,
+both new buttons ("Book Free Inspection" and "Ask On WhatsApp") fire their
+conversions, and there are no script errors. The page now has 12 tracked call /
+WhatsApp buttons instead of 10.
 
 ## Known, not blocking
 

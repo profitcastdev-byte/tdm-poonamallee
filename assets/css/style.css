@@ -665,12 +665,20 @@ html:not(.js) .slide:first-child{ opacity: 1; transform: none; clip-path: none; 
 }
 .pricing .section-sub{ color: rgba(255, 255, 255, .76); }
 
+/* a heading per price group, so the section covers more than PPF */
+.price-group{
+  margin: clamp(42px, 4.6vw, 60px) 0 clamp(18px, 2vw, 24px);
+  font-size: clamp(19px, 1.7vw, 22px); font-weight: 800; letter-spacing: -.01em;
+}
 .price-grid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
-  margin-top: clamp(38px, 4vw, 52px);
 }
+/* denting, window film and windshield: three cards, and no warranty pill, so
+   they share two rows instead of three */
+.price-grid--wide{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.price-card--plain{ grid-row: span 2; }
 /* Each card shares the grid's rows, so the name, the warranty pill and the
    price rows line up across all four cards however long a name runs. Browsers
    without subgrid ignore the row rule and simply stack the three parts. */
@@ -687,7 +695,7 @@ html:not(.js) .slide:first-child{ opacity: 1; transform: none; clip-path: none; 
 /* the name and the pill are their own grid rows, hence contents */
 .price-card-head{ display: contents; }
 .price-warranty{ justify-self: start; }
-.price-card h3{
+.price-card h4{
   margin: 0;
   font-size: 20px; font-weight: 800; line-height: 1.25;
   text-wrap: balance;
@@ -708,13 +716,17 @@ html:not(.js) .slide:first-child{ opacity: 1; transform: none; clip-path: none; 
 }
 /* the price rows carry the whole card's information, so they sit at the
    bottom of every card however long the product name runs */
-.price-list{ display: grid; align-content: end; margin: 0; }
+/* rows start under the name, so a card with fewer rows keeps its spare space
+   at the bottom rather than leaving a gap under the heading */
+.price-list{ display: grid; align-content: start; margin: 0; }
 .price-list > div{
   display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
   padding: 13px 0;
   border-top: 1px solid var(--line-dark);
 }
 .price-list dt{ color: rgba(255, 255, 255, .82); font-size: 15px; font-weight: 600; }
+/* the warranty that belongs to one row rather than the whole card */
+.price-term{ display: block; margin-top: 3px; color: rgba(255, 255, 255, .5); font-size: 12.5px; font-weight: 600; }
 /* the coverage size sits under the price, not under the car type: that keeps
    every row two lines tall, so the rows line up across all four cards even
    when a longer price pushes its car type onto a second line */
@@ -1035,7 +1047,7 @@ html:not(.js) .slide:first-child{ opacity: 1; transform: none; clip-path: none; 
 
   .price-grid{ grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .price-card{ row-gap: 14px; padding: 24px 20px 20px; }
-  .price-card h3{ font-size: 18.5px; }
+  .price-card h4{ font-size: 18.5px; }
   .service-card{
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
