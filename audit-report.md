@@ -72,6 +72,16 @@ These cannot be done from the files.
 5. **Share the live URL once on WhatsApp** to confirm the preview shows the
    workshop photo.
 
+## Update, 25 September 2026
+
+A **Full Car PPF Packages** section (`#pricing`) was added between Denting &
+Painting and the FAQ, from the client's price table: four films, three car
+sizes, twelve prices. Re-checked after the change: no sideways scroll at 320 to
+1920 px, the price rows line up across all four cards at every width, both new
+buttons ("Book Free Inspection" and "Ask On WhatsApp") fire their conversions,
+and there are no script errors. The page now has 12 tracked call / WhatsApp
+buttons instead of 10.
+
 ## Known, not blocking
 
 - **Number plate.** The Why Us photo shows a customer's number plate clearly.

@@ -646,6 +646,90 @@ html:not(.js) .slide:first-child{ opacity: 1; transform: none; clip-path: none; 
   .card-wa:hover{ background: var(--red); transform: scale(1.06); }
 }
 
+/* ============================== pricing ============================== */
+/* Dark band like the About section: it separates the three service sections
+   above from the FAQ below, and makes the price list the thing you stop on. */
+.pricing{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--ink-2);
+  color: #fff;
+}
+.pricing::before{
+  content: ""; position: absolute; z-index: -1;
+  top: -420px; left: -300px;
+  width: 860px; aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgba(255, 0, 0, .16), transparent);
+  pointer-events: none;
+}
+.pricing .section-sub{ color: rgba(255, 255, 255, .76); }
+
+.price-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: clamp(38px, 4vw, 52px);
+}
+/* Each card shares the grid's rows, so the name, the warranty pill and the
+   price rows line up across all four cards however long a name runs. Browsers
+   without subgrid ignore the row rule and simply stack the three parts. */
+.price-card{
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  row-gap: 16px;
+  padding: 30px 26px 26px;
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius-card);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+}
+/* the name and the pill are their own grid rows, hence contents */
+.price-card-head{ display: contents; }
+.price-warranty{ justify-self: start; }
+.price-card h3{
+  margin: 0;
+  font-size: 20px; font-weight: 800; line-height: 1.25;
+  text-wrap: balance;
+}
+.price-finish{
+  display: block;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, .58);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+.price-warranty{
+  margin: 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--red-600);
+  color: #fff;
+  font-size: 13px; font-weight: 700;
+}
+/* the price rows carry the whole card's information, so they sit at the
+   bottom of every card however long the product name runs */
+.price-list{ display: grid; align-content: end; margin: 0; }
+.price-list > div{
+  display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+  padding: 13px 0;
+  border-top: 1px solid var(--line-dark);
+}
+.price-list dt{ color: rgba(255, 255, 255, .82); font-size: 15px; font-weight: 600; }
+/* the coverage size sits under the price, not under the car type: that keeps
+   every row two lines tall, so the rows line up across all four cards even
+   when a longer price pushes its car type onto a second line */
+.price-list dd{ margin: 0; text-align: right; font-size: 19px; font-weight: 800; white-space: nowrap; }
+.price-list dd span{ display: block; margin-top: 3px; color: rgba(255, 255, 255, .5); font-size: 12.5px; font-weight: 600; }
+
+.price-note{
+  max-width: 780px;
+  margin: clamp(26px, 3vw, 34px) 0 0;
+  color: rgba(255, 255, 255, .7);
+  font-size: 15.5px; line-height: 1.65;
+  text-wrap: pretty;
+}
+.price-cta{ display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
 /* ============================== footer ============================== */
 .footer{ padding: clamp(64px, 7vw, 84px) 0 32px; background: var(--black); color: #fff; }
 .footer-grid{
@@ -874,6 +958,7 @@ html:not(.js) .slide:first-child{ opacity: 1; transform: none; clip-path: none; 
   .about-grid{ grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); }
   .faq-grid{ grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); }
   .service-card{ padding: 34px 28px 30px; }
+  .price-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* where the container edge meets the floating buttons, lift the slide ticker
@@ -947,6 +1032,10 @@ html:not(.js) .slide:first-child{ opacity: 1; transform: none; clip-path: none; 
 
   /* compact cards: icon and title share a row, copy runs full width below */
   .services-grid{ grid-template-columns: minmax(0, 1fr); gap: 14px; }
+
+  .price-grid{ grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .price-card{ row-gap: 14px; padding: 24px 20px 20px; }
+  .price-card h3{ font-size: 18.5px; }
   .service-card{
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);

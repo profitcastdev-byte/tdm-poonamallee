@@ -123,6 +123,30 @@ Notes on the current set:
   canonical, `og:url`, `og:image`, the JSON-LD `url` / `image` and `LIVE_URL` in
   `deploy/deploy-kvm.sh` together (the script refuses to upload if they disagree).
 
+## Pricing section
+
+`#pricing` lists the four full car PPF packages from the client's price table
+(25 September 2026), exactly as given:
+
+| Film | Warranty | Small car (190 sqft) | Sedan (220 sqft) | SUV / MUV / Luxury (250 sqft) |
+|---|---|---|---|---|
+| TPU Ace (Gloss) | 5 years | 75,000 | 85,000 | 95,000 |
+| TPU Fusion (Gloss) | 7 years | 90,000 | 1,00,000 | 1,10,000 |
+| TPU Ace (Gloss) with Infusion Coating | 5 years | 85,000 | 90,000 | 1,00,000 |
+| Ultra Crystal Gloss | 10 years | 1,20,500 | 1,35,000 | 1,50,500 |
+
+The film names and warranties match the UltrashieldX product table in
+`TDM - Brochure New 2025.pdf` (Ace 5 years, Fusion 7 years). The brochure's own
+per-square-foot rates and its ceramic, glass film and detailing packages are the
+national price list and are deliberately not on the page: only these four
+packages are quoted, and everything else is quoted after the free inspection.
+
+To change a price, edit the `<dd>` in that card in `index.html` and bump the
+`?v=` numbers. To add a package, copy one `.price-card` block: the cards share
+their grid rows, so a longer name still leaves every price row aligned. The
+page states no tax treatment, so if the prices are quoted before GST, say so in
+`.price-note`.
+
 ## Changing phone, WhatsApp or address
 
 Edit the `CLIENT` block at the top of `assets/js/main.js` only. Every phone,

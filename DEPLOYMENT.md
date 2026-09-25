@@ -45,7 +45,7 @@ It only ever touches the site's files. It never edits nginx, reloads it or
 changes certificates.
 
 **Edited `style.css` or `main.js`?** Bump `?v=` on its link in `index.html`
-(currently `style.css?v=17`, `main.js?v=9`) before deploying. The server tells
+(currently `style.css?v=18`, `main.js?v=9`) before deploying. The server tells
 browsers to keep CSS and JS for a day.
 
 **Replaced a photo?** Give the new file a new name, or bump the `?v=` on its
