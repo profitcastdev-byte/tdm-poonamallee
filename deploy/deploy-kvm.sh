@@ -27,10 +27,13 @@ ssh_kvm() { ssh -o BatchMode=yes -o ConnectTimeout=15 "$HOST" "$@"; }
 # Every file that is served, and nothing else. An allowlist, not a list of
 # excludes: this repo also holds README.md, audit-report.md, DEPLOYMENT.md,
 # deploy/ and the deploy zip, none of which belong on a public server.
+# favicon.ico sits at the root as well as in assets/img, because browsers and
+# link-preview services request /favicon.ico without reading the page.
 # hero-banner.jpg does ship: it is the og:image that WhatsApp and Facebook fetch
 # for link previews.
 ship_files() {
   { echo index.html
+    echo favicon.ico
     find assets -type f ! -name '.*' ! -name Thumbs.db ! -name desktop.ini
   } | LC_ALL=C sort
 }

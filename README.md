@@ -13,7 +13,7 @@ serve the folder with any static host.
 index.html
 assets/css/style.css
 assets/js/main.js
-assets/img/            logos, favicon, hero banner, section photos
+assets/img/            logos, icons, hero banner, section photos
 deploy/                KVM deploy script and nginx vhost (DEPLOYMENT.md)
 deploy-kvm.cmd         runs the deploy script from PowerShell / cmd
 audit-report.md        pre-launch QA, 19 Sep 2026
@@ -37,13 +37,13 @@ The page lives on the Profitcast KVM. From the project root in PowerShell:
 for that shared server.
 
 `TDM-Poonamallee-Landing-Page-deploy.zip` holds exactly what the site needs, for
-any other host: `index.html` and `assets/` at the zip's root (22 files, about
+any other host: `index.html`, `favicon.ico` and `assets/` at the zip's root (25 files, about
 2.4 MB). It is tracked in git on purpose, so the latest bundle can always be
 downloaded from the repo. After any edit, bump the `?v=` numbers, rebuild the zip
 from the same files, deploy, and commit and push everything together:
 
 ```powershell
-python -c "import zipfile; from pathlib import Path; fs=[Path('index.html'),Path('assets/css/style.css'),Path('assets/js/main.js')]+sorted(Path('assets/img').iterdir()); z=zipfile.ZipFile('TDM-Poonamallee-Landing-Page-deploy.zip','w',zipfile.ZIP_DEFLATED,compresslevel=9); [z.write(f,f.as_posix()) for f in fs]; z.close()"
+python -c "import zipfile; from pathlib import Path; fs=[Path('index.html'),Path('favicon.ico'),Path('assets/css/style.css'),Path('assets/js/main.js')]+sorted(Path('assets/img').iterdir()); z=zipfile.ZipFile('TDM-Poonamallee-Landing-Page-deploy.zip','w',zipfile.ZIP_DEFLATED,compresslevel=9); [z.write(f,f.as_posix()) for f in fs]; z.close()"
 ```
 
 ## Source material

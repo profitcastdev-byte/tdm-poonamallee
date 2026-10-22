@@ -33,7 +33,8 @@ A deploy:
 
 1. Refuses to start if `canonical`, `og:url` or `og:image` in `index.html` do
    not point at `https://lp.tdmpoonamallee.in/`.
-2. Uploads only the 22 files the page serves: `index.html` and `assets/`.
+2. Uploads only the 25 files the page serves: `index.html`, `favicon.ico`
+   and `assets/`.
    README, the audit report, this file, `deploy/`, `.claude/` and the zip never
    leave this machine.
 3. Unpacks beside the live folder and swaps it in, keeping the previous release
